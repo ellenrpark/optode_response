@@ -84,14 +84,14 @@ def GetResponseTime(sensor, T,S, V, method, fit_type = 'doxy'):
     if 'park' in method:
         
         # Temperature must be potential temperature
-        results = pd.read_csv('data/tau_predict_params.csv', index_col = 0)
+        results = pd.read_csv('data/tau_predict_params_new.csv', index_col = 0)
 
         # Calculate Reynolds number
         Re = CalculateReynolds(T, S, V)
         
         tau = TauEqn(Re, 
-                     results.loc[sensor,'A_'+fit_type], 
-                     results.loc[sensor,'b_'+fit_type])
+                     results.loc[sensor,'F_'+fit_type], 
+                     results.loc[sensor,'bv_'+fit_type])
         
     elif method == 'bittig':
         
